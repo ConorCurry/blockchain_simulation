@@ -6,7 +6,6 @@ from time import localtime, strftime
 
 url_template = 'https://blockchain.info/block-height/{}?format=json'
 
-
 start = 400001
 
 #note that max block size is 1MB
