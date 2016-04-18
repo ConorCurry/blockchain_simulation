@@ -1,7 +1,5 @@
 # Background
 
-Here's some background on the blockchain
-
 Bitcoin is the most widely used cryptocurrency protocol, that has enabled the growth of a major global economic system over the past few years. The one of the core innovations that makes it possible is the consensus-oriented, distributed database known as the blockchain. The blockchain represents the collective history of Bitcoin – a complete ledger of all coin ownership and transactions.
 
 A Bitcoin transaction is performed by submitting the desired transaction to the network. As it traverses the network nodes, it may be picked up by a 'Bitcoin miner'. The job of these miners is to add new blocks to the blockchain, by solving difficult mathematical problems – computing hash preimages. This is called the blockchain's _Proof of Work_. As they perform work to find a valid solution to the preimage problem, they are free to add any new transactions they notice on the network. Upon finding a solution, the block is added to the blockchain, and the transactions that were included in the block are now part of Bitcoin's collective history.
