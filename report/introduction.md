@@ -1,3 +1,6 @@
 # Introduction
 
 This is the introduction to our paper.
+
+As the Bitcoin protocol becomes more and more accepted, new problems have arisen that lead some to doubt the long term feasibility of the currency and underlying blockchain technology. There is much discussion surrounding the so called “blocksize debate”. The 1MB limit has caused delays in low-fee transactions, leading to larger fee amounts in order to be put on the blockchain in a reasonable amount of time. There have been occurrences of runs of full blocks lasting for several hours, and in some cases there may have been malicious actors attempting to slow the network, or increase required transaction fees.
+The goal of our simulation is to conduct an analysis of the stability of the queueing system found in Bitcoin. Given parameters determined via input validated data from the blockchain itself, we seek to determine the likelihood of runs of full blocks, and the possible effects of increasing the blocksize. It is important to note that there are several consequences of increasing the blocksize that the simulation will not be able to accurately model due to simplifiying assumptions, yet hopefully the data collected from the runs of this simulation will promote more informed decision making regarding Bitcoin's scalability and possibilities for the future of the protocol.
