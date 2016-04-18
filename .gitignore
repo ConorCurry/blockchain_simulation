@@ -1,3 +1,11 @@
+report/latex/final_report.aux
+report/latex/final_report.out
+report/latex/final_report.pdf
+report/latex/final_report.synctex.gz
+report/output.html
+report/output.md
+report/output.tex
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
