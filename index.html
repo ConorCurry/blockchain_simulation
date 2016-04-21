@@ -73,32 +73,24 @@
                     </section>
                     <section>
                         <h3>Input Modeling</h3>
-                        <ul style="font-size:85%">
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
+                        <ul>
+                            <li>Modeled interarrival times of each block, normalized the data, and ran the Kolmogrov-Smirnov test on the resulting data</li>
                         </ul>
                     </section>
                     <section>
                         <h3>Simulation</h3>
-                        <ul style="font-size:85%">
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
+                        <ul>
+                            <li>Arrival times generated for each block</li>
+                            <li>Lambda value generated for arrival times of transactions per block</li>
+                            <li>Run two seperate simulations, one as the control group using the original block size of 1 MB, the other being the experimental group using a doubled block size</li>
+                            <li>For the experimental group, test if the new block size can saturate the number of incoming transactions per rate time</li>
                         </ul>
                     </section>
                     <section>
                         <h3>Model Validation</h3>
                         <ul style="font-size:85%">
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
+                            <li>Compare control group data to actual data previously collected</li>
+                            <li>Compare results of control group to those of the experimental group</li>
                         </ul>
                     </section>
                 </section>
@@ -110,25 +102,40 @@
                         <p>Given parameters determined via input validated data from the blockchain itself, we seek to determine the likelihood of runs of full blocks, likely cost estimates per byte on the blockchain, and the possible effects of increasing the block size</p>
                         <p>We hope to observe the dynamics of user-miner interactions in the Bitcoin system, as a function of inclusion in the blockchain</p>
                     </section>
+                    <section>
+                        <h3>Setup</h3>
+                        <p>Used blockchain.info API and Python libraries scipy, numpy, and matplotlib to collect, model, simulate, and validate data</p> 
+                    </section>
                 </section>
 
                 <section id="slide6">
                     <section><h1>Results</h1></section>
                     <section><!--Present the results from your experiments. What do the numbers tell you? How might you modify the system you were studying given your results? Show results table even if you don't have numbers for them yet. Talk about possible outcomes - what would the experiment tell you if the numbers come out one way versus another way?-->
+                        <h4>Kolmogrov-Smirnov Test</h4>
                         <table width="100%">
                             <tr>
-                                <td>bitcoin</td>
-                                <td>blockchain</td>
+                                <td></td>
+                                <td>D-Statistic</td>
+                                <td>P Value</td>
                             </tr>
                             <tr>
-                                <td>simulation</td>
-                                <td>data</td>
+                                <td>For Normal</td>
+                                <td>0.2134</td>
+                                <td>0.0195</td>
                             </tr>
                             <tr>
-                                <td>example</td>
-                                <td>table</td>
+                                <td>For Exponential</td>
+                                <td>0.0751</td>
+                                <td>0.6230</td>
                             </tr>
                         </table>
+                        <p style="font-size:80%">For modeling the arrival time of the blocks</p>
+                    </section>
+                    <section>
+                        <h3>Distributions</h3>
+                        <p>Exponential: </p>
+                        <p>Poisson: </p>
+                        <p>Erlang: Arrival times of the transactions in each block</p>
                     </section>
                 </section>
 
@@ -136,7 +143,9 @@
                     <section><h1>Discussion</h1></section>
                     <section><!--What are the challenges you ran into while conducting this project? Were there simplifying decisions that you had to make? What would you do differently if you had more time?-->
                         <h3>Simplifying Decisions</h3>
-                        <p>The actual transaction arrival times were not recorded - instead a model was created and validated</p>
+                        <p>Since the data wouldn't be flat, the actual transaction arrival times were not recorded - instead a model was created and validated</p>
+                        <h3>Challenges</h3>
+                        <p>Everything was easy</p>
                     </section>
                 </section>
 
