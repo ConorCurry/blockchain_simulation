@@ -83,14 +83,15 @@
                             <li>Arrival times generated for each block</li>
                             <li>Lambda value generated for arrival times of transactions per block</li>
                             <li>Run two seperate simulations, one as the control group using the original block size of 1 MB, the other being the experimental group using a doubled block size</li>
-                            <li>For the experimental group, test if the new block size can saturate the number of incoming transactions per rate time</li>
+                            <li>For the experimental group, test if the new block size can saturate the number of incoming transactions per rate time, specifically looking at the backlog run of transaction data</li>
+                        
                         </ul>
                     </section>
                     <section>
                         <h3>Model Validation</h3>
                         <ul style="font-size:85%">
                             <li>Compare control group data to actual data previously collected</li>
-                            <li>Compare results of control group to those of the experimental group</li>
+                            <li>Compare results of control group to those of the experimental group, focusing on comparing the backlog run data</li>
                         </ul>
                     </section>
                 </section>
@@ -132,11 +133,26 @@
                         <p style="font-size:80%">For modeling the arrival time of the blocks</p>
                     </section>
                     <section>
+                        <h4>Block Interrarival Times</h4>
+                        <img src="figures/interarrival-exponential-dist.png"></img>
+                        <p style="font-size: 75%"></p>
+                    </section>
+                    <section>
+                        <h4>Transaction Arrival Rates</h4>
+                        <img src="figures/transaction-rate-histogram.png"></img>
+                        <p style="font-size: 75%"></p>
+                        </section>
+                    <section>
+                        <h4>Kolmogrov-Smirnov of Erlang distributions</h4>
+                        <img src="figures/erlang-shape-parameters-ks-tests.png"></img>
+                        <!--<p style="font-size: 75%">Note: y-axis values represent D-Statistic, x-axis values represent k, and should start at x = 1. Thus, k = 3 instead of 2, as shown.</p>-->
+                    </section>
+                    <!--<section>
                         <h3>Distributions</h3>
                         <p>Exponential: </p>
                         <p>Poisson: </p>
                         <p>Erlang: Arrival times of the transactions in each block</p>
-                    </section>
+                        </section>-->
                 </section>
 
                 <section id="slide7">
@@ -145,14 +161,17 @@
                         <h3>Simplifying Decisions</h3>
                         <p>Since the data wouldn't be flat, the actual transaction arrival times were not recorded - instead a model was created and validated</p>
                         <h3>Challenges</h3>
-                        <p>Everything was easy</p>
+                        <p>Working in a system where the poisson lambda parameter is itself a random variable</p>
+                        <p>Integer division was a major challenge</p>
                     </section>
                 </section>
 
                 <section id="slide8">
                     <section><h1>Conclusion</h1></section>
                     <section><!--Summary of your problem and your findings, and some future experiments you'd recommend running to continue examining this problem.-->
-                    
+                        <p>Interarrival time of the blocks was calculated as exponential</p>
+                        <p>Number of transactions per block was found to be poisson arrival</p>
+                        <p>Rate of transactions was found as erlang</p> 
                     </section>
                 </section>
             </div>
