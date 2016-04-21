@@ -64,7 +64,7 @@ class DataSet(object):
         self.interarrival=interarrival
         self.t0 = t0
         self.mean_time = mean_time
-        self.mean_interarrival_time = interarrival_time
+        self.mean_interarrival_time = mean_interarrival_time
 
 
 def generate_dataset():
