@@ -1,0 +1,12 @@
+hash: d4c565454d33a84a9b53ee5a2b616bbc11297420ec0f25c9e208c6e3bfe9af0c
+updated: 2016-04-24T21:12:23.740236071-04:00
+imports:
+- name: github.com/leesper/go_rng
+  version: 045f69b0fb19d4b975cd4193611d7a7df349566a
+- name: github.com/oleiade/lane
+  version: 937143a8563849ad6a04441e611a1dc1e9fd8fc0
+- name: github.com/russross/blackfriday
+  version: 151efb040f183f3b968215a236c71a2614b62879
+- name: github.com/shurcooL/sanitized_anchor_name
+  version: 10ef21a441db47d8b13ebcc5fd2310f636973c77
+devImports: []

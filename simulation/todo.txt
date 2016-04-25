@@ -1,0 +1,19 @@
+TODO:
+
+Establish all of the distributions to use
+    - Gamma Distribution generates the lambda for the exponential distribution for transaction arrivals
+    - Exponential distribution generates the block arrivals
+    - Exponential distribution with lambda from gamma generates the transaction arrivals
+
+Establish all of the parameters to those distributions
+
+Then, organize the functions that take those distributions.
+
+When a block arrives:
+    Set a new transaction lambda
+    Generate the next block arrival time
+
+When a transaction arrives:
+    Generate the next transaction arrival time
+
+How do I handle prices?
