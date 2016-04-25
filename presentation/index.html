@@ -1,0 +1,155 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="bower_components/reveal.js/css/reveal.css">
+        <link rel="stylesheet" href="bower_components/reveal.js/css/theme/sky.css">
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <!--<section data-markdown>
+                    <script type="text/template">
+                        ## Page title
+                        
+                        A paragraph with some text and a [link](http://hakim.se).
+                    </script>
+                    </section>-->
+
+                <section id="slide1">
+                    <h1>Blockchain Simulation</h1>
+                    <p>Conor Curry, Robbie McKinstry, & Natalie Boehm</p>
+                </section>
+
+                <section id="slide2">
+                    <section><h1>Motivation</h1></section>
+                    <section><!--What's interesting/challenging about the problem? Why did you choose this problem?-->
+                        <p>New problems have arisen leading some to doubt long term feasability of Bitcoin currency and underlying blockchain technology as the protocol becomes more accepted</p>
+                        <p>Lots of discussion surrounding 'blocksize debate' - 1 MB limit causes delays in low-fee transactions, leading to larger fee amounts in order to be put on the blockchain in a reasonable of time</p>
+                    </section>
+                    <section>
+                        <p>Runs of full blocks can last for several hours, increasing the likelihood of security breaches</p>
+                        <p>When coinbase transactions stop generating Bitcoin, fees will be relied upon to support miners in verification of blocks - it is unknown how scarce a resource space on the blockchain will be, or how competitive the 'fee market' will become</p>
+                    </section>
+                </section>
+
+                <section id="slide3">
+                    <section><h1>Specific Problem Statement</h1></section>
+                    <section><!--What precisely is your project topic? For example, if your overall problem is to do a simulation of elevators, your specific problem statement might be to compare two particular elevator pickup and dropoff policies.-->
+                        <p>We seek to figure out what impact changes in the blockchain block size have on transaction fee amounts, transaction times, and the Bitcoin ecosystem in general</p>
+                    </section>
+                </section>
+
+                <section id="slide4">
+                    <section><h1>Approach</h1></section>
+                    <section><!--What is your approach? You should be precise enough for someone else to rerun your experiment. If appropriate, you may want to illustrate the process with a flow chart or other relevant diagrams.-->
+                        <h3>A diagram of the blockchain</h3>
+                        <img src="https://bitcoin.org/img/dev/en-blockchain-overview.svg" width="120%"></img>
+                        <p style="font-size: 75%">Transaction data portion of block contains multiple transactions. Merkle root represents a singular hash of each transaction copy.</p>
+                    </section>
+                    <section>
+                        <h2>4 Phases</h2>
+                        <ol>
+                            <li>Collect public information from the blockchain</li>
+                            <li>Model data collected</li>
+                            <li>Generated simulation based on model generated</li>
+                            <li>Validate model data against empirical data</li>
+                        </ol>
+                    </section>
+                    <section>
+                        <h3>Data Collection</h3>
+                        <ul style="font-size:85%">
+                            <li>Used exposed API on <a href="https://blockchain.info">blockchain.info</a> to collect transaction information, using a collection script to collect metadata for 10,000 contiguous blocks spanning the course of a week</li>
+                            <li>Calculated acceptible number of requests per minute</li>
+                            <li>When executing script, function was included that would sleep in main thread if number of requests per minute exceeded rate</li>
+                            <li>Parsed JSON respons and transformed data into CSV format before storing data results on disk</li>
+                            <li>For each block, only interested in five attributes:</li>
+                                <ol>
+                                    <li>Number of transactions</li>
+                                    <li>Fee cost</li>
+                                    <li>Time at which block was added to blockchain</li>
+                                    <li>Block size</li>
+                                    <li>Unique identifer hash</li>
+                                </ol>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>Input Modeling</h3>
+                        <ul style="font-size:85%">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>Simulation</h3>
+                        <ul style="font-size:85%">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>Model Validation</h3>
+                        <ul style="font-size:85%">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </section>
+                </section>
+
+                <section id="slide5">
+                    <section><h1>Experimental Setup</h1></section>
+                    <section><!--Explain the goal of the experiment and how you are setting it up.-->
+                        <p><b>Goal:</b> To conduct an analysis of the stability of the queueing system found in Bitcoin</p>
+                        <p>Given parameters determined via input validated data from the blockchain itself, we seek to determine the likelihood of runs of full blocks, likely cost estimates per byte on the blockchain, and the possible effects of increasing the block size</p>
+                        <p>We hope to observe the dynamics of user-miner interactions in the Bitcoin system, as a function of inclusion in the blockchain</p>
+                    </section>
+                </section>
+
+                <section id="slide6">
+                    <section><h1>Results</h1></section>
+                    <section><!--Present the results from your experiments. What do the numbers tell you? How might you modify the system you were studying given your results? Show results table even if you don't have numbers for them yet. Talk about possible outcomes - what would the experiment tell you if the numbers come out one way versus another way?-->
+                        <table width="100%">
+                            <tr>
+                                <td>bitcoin</td>
+                                <td>blockchain</td>
+                            </tr>
+                            <tr>
+                                <td>simulation</td>
+                                <td>data</td>
+                            </tr>
+                            <tr>
+                                <td>example</td>
+                                <td>table</td>
+                            </tr>
+                        </table>
+                    </section>
+                </section>
+
+                <section id="slide7">
+                    <section><h1>Discussion</h1></section>
+                    <section><!--What are the challenges you ran into while conducting this project? Were there simplifying decisions that you had to make? What would you do differently if you had more time?-->
+                        <h3>Simplifying Decisions (?)</h3>
+                        <p>Collected contiguous sample of blocks instead of random sampling - random sampling could introduce more bias</p>
+                        <p>To aviod rate limiting, calculated acceptible number of requests per minute</p>
+                    </section>
+                </section>
+
+                <section id="slide8">
+                    <section><h1>Conclusion</h1></section>
+                    <section><!--Summary of your problem and your findings, and some future experiments you'd recommend running to continue examining this problem.-->
+                    
+                    </section>
+                </section>
+            </div>
+        </div>
+        <script src="bower_components/reveal.js/js/reveal.js"></script>
+        <script>Reveal.initialize();</script>
+    </body>
+</html>
