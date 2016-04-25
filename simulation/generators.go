@@ -19,10 +19,4 @@ func (b *Blockchain) GenerateBlockArrival() int {
 	return round(b.gammaGen.Gamma(Alpha, Beta))
 }
 
-func round(f float64) int {
-	if math.Abs(f) < 0.5 {
-		return 0
-	}
-	return int(f + math.Copysign(0.5, f))
-}
 */
