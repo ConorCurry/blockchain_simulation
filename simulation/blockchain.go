@@ -2,14 +2,20 @@ package simulation
 
 import (
 	"container/heap"
-	_ "github.com/leesper/go_rng"
+	rng "github.com/leesper/go_rng"
 	"github.com/oleiade/lane"
-	"math/rand"
+	"math"
+	"sync"
 )
 
 const (
-	BlockArrivalLambda = iota
-	TransactionArrivalLambda
+	BlockArrivalLambda = 0.00174520069808
+	TxArrivalLambda    = iota
+	TxAlpha            = 7.0
+	TxBeta             = 1.0 / 1200
+	FeeAlpha
+	FeeBeta
+	MaxTx = 2048
 )
 
 type (
@@ -17,22 +23,28 @@ type (
 	Time      int
 
 	Blockchain struct {
-		BlockArrival           func() int
-		TransactionArrivalTime func() int
-		Fee                    func() int
-		TransactionMax         int
-		History                []Block
-		TransactionWaitQueue   *lane.Queue
+		BlockArrival             func() int
+		TransactionArrivalLambda func() float64
+		Fee                      func() int
+		TxArrival                func(float64) int
+		TxLambda                 float64
 
+		TransactionMax       int
+		History              []Block
+		TransactionWaitQueue *lane.PQueue
+
+		CurrentBlock Block
 		heap.Interface
 	}
 
 	Transaction struct {
-		ArrivalTime Time
+		ArrivalTime Time `json:"time"`
+		Fee         int  `json:"fee"`
 	}
 
 	Block struct {
-		Transactions []Transaction
+		Time         `json:"time"`
+		Transactions []Transaction `json:"transactions"`
 	}
 
 	Event interface {
@@ -42,24 +54,79 @@ type (
 
 	BlockArrival       struct{ Time }
 	TransactionArrival struct{ Time }
-	Exit               struct{ Time }
+	Exit               struct {
+		filename string
+		Time
+	}
 )
 
-func NewBlockchain(s rand.Source) *Blockchain {
+func (chain *Blockchain) Run(wg *sync.WaitGroup, filename string) {
+	defer wg.Done()
 
-	random := rand.New(s)
-	_ = random
+	// Make each of the original elements and add them to the heap
+	blkArrival := BlockArrival{Time(chain.BlockArrival())}
+	txArrival := TransactionArrival{Time(chain.TxArrival(chain.TxLambda))}
+	exit := Exit{filename, Time(100000)}
+
+	heap.Push(chain, blkArrival)
+	heap.Push(chain, txArrival)
+	heap.Push(chain, exit)
+
+	for chain.Len() != 0 {
+		event := heap.Pop(chain).(Event)
+		switch event.(type) {
+		case Exit:
+			event.Visit(chain)
+			wg.Done()
+		default:
+			event.Visit(chain)
+		}
+	}
+
+}
+
+func NewBlockchain(seed int64) *Blockchain {
+
+	expGen := rng.NewExpGenerator(seed)
+	gammaGen := rng.NewGammaGenerator(seed)
+
+	blkArrival := func() int {
+		return round(expGen.Exp(BlockArrivalLambda))
+	}
+
+	txArrivalLambda := func() float64 {
+		return gammaGen.Gamma(TxAlpha, TxBeta)
+	}
+
+	fee := func() int {
+		return round(gammaGen.Gamma(FeeAlpha, FeeBeta))
+	}
+
+	txArrival := func(lambda float64) int {
+		return round(expGen.Exp(lambda))
+	}
+
 	eventHeap := make(EventHeap, 0)
 
 	return &Blockchain{
-		nil,
-		nil,
-		nil,
-		0,
-		make([]Block, 10),
-		lane.NewQueue(),
+		blkArrival,
+		txArrivalLambda,
+		fee,
+		txArrival,
+		txArrivalLambda(),
+		MaxTx,
+		make([]Block, 0),
+		lane.NewPQueue(lane.MAXPQ),
+		Block{
+			Time(0),
+			make([]Transaction, 0),
+		},
 		&eventHeap,
 	}
+}
+
+func (chain *Blockchain) BlockIsFull() bool {
+	return len(chain.CurrentBlock.Transactions) >= chain.TransactionMax
 }
 
 func (b BlockArrival) When() int       { return b.Time.Time() }
@@ -84,4 +151,11 @@ func (h *EventHeap) Pop() interface{} {
 	x := old[n-1]
 	*h = old[0 : n-1]
 	return x
+}
+
+func round(f float64) int {
+	if math.Abs(f) < 0.5 {
+		return 0
+	}
+	return int(f + math.Copysign(0.5, f))
 }
