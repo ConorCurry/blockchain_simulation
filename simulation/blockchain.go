@@ -10,12 +10,11 @@ import (
 
 const (
 	BlockArrivalLambda = 0.00174520069808
-	TxArrivalLambda    = iota
-	TxAlpha            = 7.0
-	TxBeta             = 1.0 / 1200
-	FeeAlpha
-	FeeBeta
-	MaxTx = 2048
+	TxAlpha            = 3.0
+	TxBeta             = 1.0
+	FeeAlpha           = 7.0
+	FeeBeta            = 1200.0
+	MaxTx              = 2048
 )
 
 type (
@@ -61,8 +60,8 @@ type (
 )
 
 func (chain *Blockchain) Run(wg *sync.WaitGroup, filename string) {
-	defer wg.Done()
 
+	defer wg.Done()
 	// Make each of the original elements and add them to the heap
 	blkArrival := BlockArrival{Time(chain.BlockArrival())}
 	txArrival := TransactionArrival{Time(chain.TxArrival(chain.TxLambda))}
@@ -77,7 +76,7 @@ func (chain *Blockchain) Run(wg *sync.WaitGroup, filename string) {
 		switch event.(type) {
 		case Exit:
 			event.Visit(chain)
-			wg.Done()
+			return
 		default:
 			event.Visit(chain)
 		}
@@ -99,7 +98,7 @@ func NewBlockchain(seed int64) *Blockchain {
 	}
 
 	fee := func() int {
-		return round(gammaGen.Gamma(FeeAlpha, FeeBeta))
+		return round(gammaGen.Gamma(FeeAlpha, FeeBeta)) + 11500
 	}
 
 	txArrival := func(lambda float64) int {
@@ -157,5 +156,5 @@ func round(f float64) int {
 	if math.Abs(f) < 0.5 {
 		return 0
 	}
-	return int(f + math.Copysign(0.5, f))
+	return int(f + math.Copysign(0.8, f))
 }
