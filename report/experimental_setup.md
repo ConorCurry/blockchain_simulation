@@ -32,6 +32,7 @@ To run the simulation, certain simplifying decisions were made. The actual trans
 Based on the input modeling done, there were several parameters to be calculated for the simulation. The block arrival lambda value, alpha and beta values to find the transaction arrival lambda, the alpha and beta values for finding the fee cost, and maximum number of transactions per block had to all be determined. The block arrival lambda was found via the mean interarrival time using Python's libraries, 0.001745. The beta value could be determined from the Kolmogorov-Smirnov test for the Erlang distribution, arriving at a K value of degree 3. The beta value was found to be 1. For the fee cost, the apha value was found to be 7, and beta value 1200. The maximum transactions for block was 2048.
 
 Table 1. Parameter values based on true data collected.
+
 | Parameter                  | Value    |
 |:--------------------------:|:--------:|
 | Block Arrival Lambda       | 0.001745 |
@@ -46,11 +47,13 @@ The standard block size, 2048 kb served as our control group. Our experimental g
 Based on these parameters, the simulation was constructed around the use of a priority queue to collect blocks. For each block an arrival time was collected. Within this block, each transaction collected had an associated arrival time and fee. Based on the block arrival time modeling, the amount of time passed was measured, by the end of the simulated time collecting approximately 10,000 blocks.
 
 Table 2. Comparison of the control group to the experimental 2x group.
+
 | T-Statistic | P-Value     |
 |:-----------:|:-----------:|
 | 8.0835      | 9.1085      |
 
 Table 3. Comparison of the control group to the experimental 0.5x group.
+
 | T-Statistic | P-Value     |
 |:-----------:|:-----------:|
 | -1.3841     | 0.1680      |
