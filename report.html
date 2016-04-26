@@ -386,17 +386,17 @@ Ha:     Changing the block size will significantly affect the fee cost.
 
 <p>To do the input modeling, data validation and to construct graphs we utilized the Python libraries <code>scipy</code>, <code>numpy</code>, and <code>matplotlib</code>.</p>
 
-<p><img src="../figures/interarrival-exponential-dist.png" alt="Figure 1. Block Interarrival Times" /></p>
+<p><img src="/blockchain_simulation/figures/interarrival-exponential-dist.png" alt="Figure 1. Block Interarrival Times" /></p>
 
 <p>The Kolmogorov-Smirnov test was used to model the interarrival time of the blocks. As noted above, this was found to be exponential.</p>
 
-<p><img src="../figures/transaction-rate-histogram.png" alt="Figure 2. Transaction Arrival Times" /></p>
+<p><img src="/blockchain_simulation/figures/transaction-rate-histogram.png" alt="Figure 2. Transaction Arrival Times" /></p>
 
 <p>The number of transactions per block was found to follow the Poisson arrival and confirmed via Kolmogorov-Smirnov test.</p>
 
 <p>In addition, we found that the rate of transactions per block followed the Erlang distribution. This was also calculated with the Kolmogrov-Smirnov test.</p>
 
-<p><img src="../figures/erlang-shape-parameters-ks-tests.png" alt="Figure 3. Kolmogrov-Smirnov of Erlang Distributions: Y-axis values represent D-Statistic, x-axis values represent K, and should start at x = 1. Thus, k = 3 instead of 2, as shown" /></p>
+<p><img src="/blockchain_simulation/figures/erlang-shape-parameters-ks-tests.png" alt="Figure 3. Kolmogrov-Smirnov of Erlang Distributions: Y-axis values represent D-Statistic, x-axis values represent K, and should start at x = 1. Thus, k = 3 instead of 2, as shown" /></p>
 
 <h1>Simulation</h1>
 
