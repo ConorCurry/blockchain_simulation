@@ -32,8 +32,8 @@ To run the simulation, certain simplifying decisions were made. The actual trans
 Based on the input modeling done, there were several parameters to be calculated for the simulation. The block arrival lambda value, alpha and beta values to find the transaction arrival lambda, the alpha and beta values for finding the fee cost, and maximum number of transactions per block had to all be determined. The block arrival lambda was found via the mean interarrival time using Python's libraries, 0.001745. The beta value could be determined from the Kolmogorov-Smirnov test for the Erlang distribution, arriving at a K value of degree 3. The beta value was found to be 1. For the fee cost, the apha value was found to be 7, and beta value 1200. The maximum transactions for block was 2048.
 
 Table 1. Parameter values based on true data collected.
-| Parameter | Value       |
-| --------- | ----------- |
+| Parameter                  | Value    |
+|:--------------------------:|:--------:|
 | Block Arrival Lambda       | 0.001745 |
 | Transaction Alpha          | 3.0      |
 | Transaction Beta           | 1.0      |
@@ -47,12 +47,12 @@ Based on these parameters, the simulation was constructed around the use of a pr
 
 Table 2. Comparison of the control group to the experimental 2x group.
 | T-Statistic | P-Value     |
-| ----------- | ----------- |
+|:-----------:|:-----------:|
 | 8.0835      | 9.1085      |
 
 Table 3. Comparison of the control group to the experimental 0.5x group.
 | T-Statistic | P-Value     |
-| ----------- | ----------- |
+|:-----------:|:-----------:|
 | -1.3841     | 0.1680      |
 
 The block arrival generator used the same random number seed, so all blocks arrived at the same time across all experiments. As result, a Paired T Test was run between the control and experimental data produced. The calculated p-value was compared at the 0.01 significance level. Based on these calculations, the 2x Group is statistically significant, while the 0.5x group is not statistically significant. 
