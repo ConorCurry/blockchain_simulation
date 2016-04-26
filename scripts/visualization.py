@@ -31,8 +31,9 @@ ds = generate_dataset()
 
 times = sorted([block['time'] for block in ds.interarrival])
 #times = [x/max(times) for x in times]
-trimmed_times = times[::len(times)//100]
-test_erlang(trimmed_times)
+#trimmed_times = times[::len(times)//100]
+#test_erlang(trimmed_times)
+
 plt.hist(times,100)
 plt.show()
 
@@ -44,8 +45,9 @@ print 'min: {}'.format(min(tx_rate))
 trimmed_tx_rate = tx_rate[len(tx_rate)//25::len(tx_rate)//100]
 
 test_erlang(trimmed_tx_rate)
-
+rv = sp.erlang(3)
+x = np.linspace(0,1)
+#plt.plot(x, rv.pdf(x))
+#plt.show()
 plt.hist(tx_rate[:-len(tx_rate)//25], 100)
 plt.show()
-
-
