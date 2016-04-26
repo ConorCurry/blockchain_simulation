@@ -1,0 +1,5 @@
+# Future Work
+
+The scope of this simulation just scratches the surface of exploration around the blockchain. An extension of our experiment would be to run the Kolmogorov-Smirnov test over the control and real data to investigate if the simulation potentially introduced an invalid parameter. Further, another simulation could be run to compare whether or not the fees were increasing or decreasing based on the data collected, running a one-sided t-test instead of a paired t-test. The number of runs was not measured in this simulation, so another potential area of exploration would be to specifically focus on the impact of block size on the size and number of runs of blocks.
+
+Recently Bitcoin community introduced a proposal to scale the Bitcoin to better handle increased transaction volumes. Known as segregated witness, if accepted by miners, it would increase the block size to 2 MB. Future work around this simulation would be a relevant analysis tool to figure out if the proposed changes would be beneficial, something miners could in making the decision to accept changes.

@@ -1,0 +1,5 @@
+package: github.com/natboehm/blockchain_simulation
+import:
+- package: github.com/leesper/go_rng
+- package: github.com/oleiade/lane
+- package: github.com/russross/blackfriday
