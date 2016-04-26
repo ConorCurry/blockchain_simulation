@@ -9,23 +9,30 @@ Our hypothesis were as follows:
    
 In our simulation, the fee will increase if a waiting queue builds up with more elements than a block can hold. When that occurs, transactions are taken off of the queue according to their fee price, instead of the expected first-in first-out ordering. Given parameters determined via input validated data from the blockchain, the likelihood of runs of full blocks, likely cost estimates per byte on the blockchain, and overall the possible effects of increasing the block size were sought to be determined. 
 
-# Input Modeling
+## Input Modeling
 
 To do the input modeling, data validation and to construct graphs we utilized the Python libraries scipy, numpy, and matplotlib.
 
-![Figure 1. Block Interarrival Times](figures/interarrival-exponential-dist.png)
+![Figure 1. Block Interarrival Times](figures/interarrival-exponential-dist.png "Figure 1. Block Interarrival Times")
 
 The Kolmogorov-Smirnov test was used to model the interarrival time of the blocks. This was found to be exponential.
 
-![Figure 2. Transaction Arrival Times](figures/transaction-rate-histogram.png)
+![Figure 2. Transaction Arrival Times](figures/transaction-rate-histogram.png "Figure 2. Transaction Arrival Times")
 
 The number of transactions per block was found to follow the Poisson arrival, also via the Kolmogorov-Smirnov test.
 
-![Figure 3. Kolmogrov-Smirnov of Erlang Distributions: Y-axis values represent D-Statistic, x-axis values represent K, and should start at x = 1. Thus, k = 3 instead of 2, as shown](figures/erlang-shape-parameters-ks-tests.png)
+![Figure 3. Kolmogrov-Smirnov of Erlang Distributions](figures/erlang-shape-parameters-ks-tests.png "Figure 3. Kolmogorov-Smirnov of Erlang Distributions")
 
-In addition, we found that the rate of transactions per block followed the Erlang distribution. This was also calculated with the Kolmogrov-Smirnov test.
+Y-axis values represent D-Statistic, x-axis values represent K, and should start at x = 1. Thus, k = 3 instead of 2, as shown. In addition, we found that the rate of transactions per block followed the Erlang distribution. This was also calculated with the Kolmogrov-Smirnov test.
 
-# Simulation
+![Figure 4. ](figures/estimated-cdf-sorted-tx.png "Figure 4. Estimated CDF of Transactions")
+
+![Figure 5. ](figures/run-length-vs-fee-per-byte.png "Figure 5. Run Length vs Fee Per Byte")
+
+![Figure 6. ](figures/tx-fee-pdf-hist-fit.png "Figure 6. Transaction Fee PDF")
+
+
+## Simulation
 
 To run the simulation, certain simplifying decisions were made. The actual transaction arrival times were not recorded, instead a model was created and validated. This was done due to the nature of the data not being flat. 
 
