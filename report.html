@@ -1,0 +1,503 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<style>
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px; }
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+  font-size: 28px;
+  color: black; }
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black; }
+
+h3 {
+  font-size: 18px; }
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  color: #777777;
+  font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
+hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+li {
+  margin: 0; }
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+</style>
+<title>Forward</title>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax:{inlineMath:[['$$$','$$$']]}});</script><script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<body>
+<h1>Forward</h1>
+
+<p>Authored by Robbie McKinstry, Natalie Boehm, and Conor Curry.
+You can view an HTML representation of this paper at <a href="https://github.com/natboehm/blockchain_simulation">on our Github</a></p>
+
+<h1>Introduction</h1>
+
+<p>As the Bitcoin protocol becomes more and more accepted, new problems have arisen that lead some to doubt the long term feasibility of the currency and underlying blockchain technology. There is much debate surrounding size of the block. The block, which is the fundamental atom of storage in the database, has been overgrown by the Bitcoin userbase. Blocks have a 1 MB size restriction, which has created a long wait time for transactions to be confirmed. Thus, Bitcoin is infeasable for standard, face-to-face currency exchanges, since it can take more than 20 minutes for the distributed database known as the blockchain to confirm that a transaction has occurred.</p>
+
+<p>The 1MB limit and slow confirmation time has caused delays in low-fee transactions, leading to larger fee amounts in order to be put on the blockchain in a reasonable amount of time. Users must pay higher and higher fees to outbid other users for space on the scarce resource of the block. There have been occurrences of runs of full blocks lasting for several hours, and in some cases there may have been malicious actors attempting to slow the network, or increase required transaction fees. Each of these events affects end users by requiring a trade off between high fees and long queue times.</p>
+
+<p>While some may argue this inconvienence inhibites widespread adoption, there is an expected plan for the Bitcoin ecosystem to resolve many of these issues. In the absence of a new plan, things will only become more grim: when coinbase transactions stop generating Bitcoins (i.e. when the mines run dry), fees will be relied upon to support the miners in their verification of blocks. It is unknown how scarce a resource space on the blockchain will be, or how competetive the 'fee market' will become. However, these are the sorts of questions we hope to start developing answers for with this simulation.</p>
+
+<p>The overarching goal of our simulation is to conduct an analysis of the stability of the queueing system found in Bitcoin. Given parameters determined via input validated data from the blockchain itself, we seek to determine the likelihood of runs of full blocks, likely cost estimates per byte on the blockchain, and the possible effects of increasing the blocksize. We hope to observe the dynamics of user-miner interactions in the bitcoin system, as a function of inclusion in the blockchain. It is important to note that there are several consequences of increasing the blocksize (such as increased centralization, or block-withholding attacks) that the simulation will not be able to accurately model due to simplifiying assumptions. Yet we hope that the data collected from the runs of this simulation will promote more informed decision making regarding Bitcoin's scalability and possibilities for the future of the protocol.</p>
+
+<hr />
+
+<h1>Background</h1>
+
+<p>Bitcoin is the most widely used cryptocurrency protocol, that has enabled the growth of a major global economic system over the past few years. The one of the core innovations that makes it possible is the consensus-oriented, distributed database known as the blockchain. The blockchain represents the collective history of Bitcoin – a complete ledger of all coin ownership and transactions.</p>
+
+<p>A Bitcoin transaction is performed by submitting the desired transaction to the network. As it traverses the network nodes, it may be picked up by a 'Bitcoin miner'. The job of these miners is to add new blocks to the blockchain by solving difficult mathematical problems – computing hash preimages. This is called the blockchain's <em>Proof of Work</em>. As they perform work to find a valid solution to the preimage problem, they are free to add any new transactions they notice on the network. Upon finding a solution, the block is added to the blockchain, and the transactions that were included in the block are now part of Bitcoin's collective history. In addition, the miner recieves a bounty for solving the block, known as a coinbase transaction. This is how all Bitcoins are initially generated, and is the origin of the term 'mining'. In the early days of Bitcoin, this is expected to be the main incentive for Bitcoin miners to add to the blockchain. However, this block reward is halved every 4 years. What began as a 50 Bitcoin reward is now 25, and in a few months from this writing, it will become 12.5. Eventually it is expected that transaction fees will be the sole motivation for adding to the blockchain, and coinbase transactions no longer generate new Bitcoins.</p>
+
+<p>It is important to note that the miners are not forced to add transactions to a block. Instead, when submitting a transaction, a Bitcoin user should provide a fee that can be collected by the miner when solving the block. This provides incentive for the miner to include transactions in their block solutions. The other important facet of the blockchain examined in this simulation is the blocksize limit: currently 1MB. This means that for any particular block, transactions are put into a kind of fuzzy priority queue on the network, as they wait to be selected for inclusion in a block – where space is limited. This waiting time is enforced by the difficulty of computing preimages, and set to be approximately 10 minutes. In this way, bytes on the blockchain are bought by users making transactions, and sold by the miners.</p>
+
+<hr />
+
+<h1>Approach</h1>
+
+<p>Before we could conduct experimentation, we first had to develop a model for the blockchain and then implement it. This proces was composed of 3 phases.</p>
+
+<ol>
+<li>We collected public information from the block chain.</li>
+<li>Next, we modeled the data we collected.</li>
+<li>Finally, we generated a simulation based on the model we generated.</li>
+</ol>
+
+
+<h2>Data Collection</h2>
+
+<p>To collect the data, we queried an API for the transaction history of the block chain. Because the block chain is open source, anyone can create a node of the distributed database and join the system. This means that all data in the blockchain is public. This is in contrast to traditional equities markets, where pricing information and transactions are not necessarily released instantaniously; markets like <em>dark pools</em> may report transactions well after they've occurred, and companies like Bloomburgh license a stream of ticker information to customers who want to see prices in real-time. Instead, we were able to use a free public API to collect the history of the blockchain.</p>
+
+<p>We used <a href="blockchain.info">Blockchain.info</a> to collect the transaction information. Blockchain.info exposes an <a href="https://blockchain.info/api">API</a> for aggregating information on recorded blocks. We collected metadata for 10000 blocks spanning the course of a week.</p>
+
+<p>We collected only contiguous blocks, instead of a random sampling of blocks, because a random sampling could introduce much more bias. Supposing you sample randomly, you may end up with a sample consisting of a high density of transactions at a certain point in the day; time of day could influence transaction rate, depending on how many Bitcoin users are at that time of day. Additionally, because our study requires that we find the duration of time for which there is a backlog of transations (i.e. the amount of time in between non-full blocks) we needed continuous data; if the blocks were non-contiguous, then it's possible that a intermediate block could be non-full, resulting in an error. (Here, we use <strong>contiguous</strong> to refer to blocks, as they are sequential, discrete entities, and <strong>continuous</strong> to refer to data, which has an associated timestamp and thus is non-discrete.)</p>
+
+<p>In order to avoid rate limiting, we calculated the acceptible number of requests per minute. When executing our collection script, we included a function that would sleep the main thread if our number of requests in the last minute exceeded our rate. Then, we parsed the JSON response and transformed the data to CSV format before storing the results on disk. The data we collected represented 1020 KB of storage, and 10000 outbound network requests. For each block, we were only interested in five attributes: number of transactions, fee cost, the time at which the block was added to the blockchain, the block size, and the unique identifier hash. All remaining attributes are computed properties derived from the above. In particular, the rate of transaction arrival can be computed by applying the Poisson Arrival Process to the above information.</p>
+
+<h2>Input Modeling</h2>
+
+<p>Once we had collected the data for our model, we began analysis to determine the distribution of the arrival of blocks in the blockchain. Our goal was to be able to determine how frequently new blocks are added to the chain. Each block is added to the chain following a random process: a block is added once a Proof of Work procedure has been completed.</p>
+
+<p>A Proof of Work procedure is a problem generally difficult and time consuming to solve, but easily varifiable. This done in part for rate-limiting purposes, as a block can be generated only so fast as the Proof of Work is completed, as well as for security. The more difficult the Proof of Work, the longer amount of time between generating blocks, so gauging the difficulty helps to keep the generation rate constant. In the case of Bitcoin, the Proof of Work is computing the preimage of a hash, based on the SHA-256 algorithm. This involves taking two strings and hashing them together to produce a result with a set number of leading zeros. If the amount of leading zeros on the result meet a given threshold, the block is solved. Otherwise, a different hash string must be input.</p>
+
+<p>Once the interarrival times for each block were modeled, the Kolmogrov-Smirnov test on the resulting data. It tested for both the normal distribution as well as the exponential distribution. In addition, the rate of the transaction times was modeled, as well as the the number of transactions per block.</p>
+
+<p>The tests showed that the block arrival rate was exponetial, with a lambda of 0.0017452. Comparing the data set in a KS test against the exponential distribution with the above lambda, the test came back insignificant, indicating that the data indistinguishable from a sampling from the exponential distribution with confidence of 5%.</p>
+
+<h2>Simulation</h2>
+
+<p>To run the simulation, arrival times were generated for each block. A lambda value was generated for the arrival times of transactions per block. Three separate simulations were run, one as the control group using the original block size of 1 MB, another being the experimental group using a doubled block size (2048), and a third with a final block size of 512 KB. Running the control group is necessary to ensure that the simulation was modeled correctly after the real data, and that the experimental data is being compared in an equal environment. The experimental group was tested specifically to investigate if the new block size could saturate the number of incoming transactions per rate time, looking closely at the backlog run of transaction data.</p>
+
+<hr />
+
+<h1>Experiment Setup and Design</h1>
+
+<p>The purpose of the experiment was to test the effects of a modified block size on transaction fees. As of late, Bitcoin has been suffering from an increase of transaction fees stemming from a dearth in the number of available blocks. The correlation between runs of full blocks and transaction fees was measured, and there was determined to be a moderate correlation (r = 0.5). Thus, reducing the number of runs of full blocks should decrease the cost to perform a transaction for the average Bitcoin owner.</p>
+
+<p>Our hypothesis were as follows:</p>
+
+<pre><code>H0:     Adjusting the block will not significantly affect fees.
+Ha:     Changing the block size will significantly affect the fee cost.
+</code></pre>
+
+<p>In our simulation, the fee will increase if a waiting queue builds up with more elements than a block can hold. When that occurs, transactions are taken off of the queue according to their fee price, instead of the usual first-in first-out ordering. Given parameters determined via input validated data from the blockchain, the resultant transactions, blocks, and fees were generated from our simulation, for each of the three independent variables.</p>
+
+<h1>Input Modeling</h1>
+
+<p>To do the input modeling, data validation and to construct graphs we utilized the Python libraries <code>scipy</code>, <code>numpy</code>, and <code>matplotlib</code>.</p>
+
+<p><img src="../figures/interarrival-exponential-dist.png" alt="Figure 1. Block Interarrival Times" /></p>
+
+<p>The Kolmogorov-Smirnov test was used to model the interarrival time of the blocks. As noted above, this was found to be exponential.</p>
+
+<p><img src="../figures/transaction-rate-histogram.png" alt="Figure 2. Transaction Arrival Times" /></p>
+
+<p>The number of transactions per block was found to follow the Poisson arrival and confirmed via Kolmogorov-Smirnov test.</p>
+
+<p>In addition, we found that the rate of transactions per block followed the Erlang distribution. This was also calculated with the Kolmogrov-Smirnov test.</p>
+
+<p><img src="../figures/erlang-shape-parameters-ks-tests.png" alt="Figure 3. Kolmogrov-Smirnov of Erlang Distributions: Y-axis values represent D-Statistic, x-axis values represent K, and should start at x = 1. Thus, k = 3 instead of 2, as shown" /></p>
+
+<h1>Simulation</h1>
+
+<p>To run the simulation, certain simplifying decisions were made. The actual transaction arrival times were not recorded, instead a model was created and validated. This was done due to the nature of the data not being flat.</p>
+
+<p>Based on the input modeling done, there were several parameters to be calculated for the simulation. The block arrival lambda value, alpha and beta values to find the transaction arrival lambda, and the alpha and beta values for finding the fee cost all had to all be determined. The block arrival lambda was found via the mean interarrival time using a custom Python script. The lambda was 0.001745. The beta value could be determined from the Kolmogorov-Smirnov test for the Erlang distribution, arriving at a K value of degree 3. The beta value was found to be 1. For the fee cost, the alpha value was found to be 7, and beta value 1200.</p>
+
+<p>Table 1. Parameter values based on true data collected.</p>
+
+<table>
+<thead>
+<tr>
+<th align="center"> Parameter                  </th>
+<th align="center"> Value    </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"> Block Arrival Lambda       </td>
+<td align="center"> 0.001745 </td>
+</tr>
+<tr>
+<td align="center"> Transaction Alpha          </td>
+<td align="center"> 3.0      </td>
+</tr>
+<tr>
+<td align="center"> Transaction Beta           </td>
+<td align="center"> 1.0      </td>
+</tr>
+<tr>
+<td align="center"> Fee Alpha                  </td>
+<td align="center"> 7.0      </td>
+</tr>
+<tr>
+<td align="center"> Fee Beta                   </td>
+<td align="center"> 1200.0   </td>
+</tr>
+</tbody>
+</table>
+
+
+<p>The standard block size, 2048 KB served as our control group. Our experimental groups were powers of 2 on the standard size, as those have been proposed changes to the block size. We also tested halving the size to 1024 KB. All other factors were kept constant between simulation runs, including the random variate seed.</p>
+
+<p>Based on these parameters, the simulation was constructed around the use of a priority queue to collect blocks. For each block an arrival time was collected. Within this block, each transaction collected had an associated arrival time and fee. Based on the block arrival time modeling, the amount of time passed was measured, by the end of the simulated time collecting approximately 10,000 blocks.</p>
+
+<p>Table 2. Comparison of the control group to the experimental 2x group.</p>
+
+<table>
+<thead>
+<tr>
+<th align="center"> T-Statistic </th>
+<th align="center"> P-Value     </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"> 8.0835      </td>
+<td align="center"> 9.1085      </td>
+</tr>
+</tbody>
+</table>
+
+
+<p>Table 3. Comparison of the control group to the experimental 0.5x group.</p>
+
+<table>
+<thead>
+<tr>
+<th align="center"> T-Statistic </th>
+<th align="center"> P-Value     </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"> -1.3841     </td>
+<td align="center"> 0.1680      </td>
+</tr>
+</tbody>
+</table>
+
+
+<p>The block arrival generator used the same random number seed, so all blocks arrived at the same time across all experiments. As result, a Paired T Test was run between the control and experimental data produced. The calculated p-value was compared at the 0.01 significance level. Based on these calculations, the 2x Group is statistically significant, while the 0.5x group is not statistically significant.</p>
+
+<hr />
+
+<h1>Future Work</h1>
+
+<p>The scope of this simulation just scratches the surface of exploration around the blockchain. An extension of our experiment would be to run the Kolmogorov-Smirnov test over the control and real data to investigate if the simulation potentially introduced an invalid parameter. Further, another simulation could be run to compare whether or not the fees were increasing or decreasing based on the data collected, running a one-sided t-test instead of a paired t-test. The number of runs was not measured in this simulation, so another potential area of exploration would be to specifically focus on the impact of block size on the size and number of runs of blocks.</p>
+
+<p>Recently Bitcoin community introduced a proposal to scale the Bitcoin to better handle increased transaction volumes. Known as segregated witness, if accepted by miners, it would increase the block size to 2 MB. Future work around this simulation would be a relevant analysis tool to figure out if the proposed changes would be beneficial, something miners could in making the decision to accept changes.</p>
+
+<hr />
+
+<h1>Conclusions:</h1>
+
+<p>Our data analysis indicated that adjusting the block size to twice the normal size yielded statistically significant results. Thus, the null hypothesis can be rejected, and we can conclude that increasing the blocks size will significantly affect the fee cost. Adjusting the block size to half the normal size did not produce statistically significant results, so we fail to reject the null hypothsis. It is presumed that decreasing the block size will not significantly affect fees, however further data analysis is necessary to prove either way.</p>
+
+<p>Based on the results collected, it can be concluded that manipulation of the block size has an impact on the transaction fees. This is significant as it could have the potential to impact the yield of Bitcoin mining in the future.</p>
+
+<p>Input analysis determined that runs are loosely correlated with fees, r = 0.5. Runs were not measured in the simulation, however it appeared that the wait queue size increased consistantly between blocks throughout the simulation.</p>
+
+<hr />
+</body>
+</html>
