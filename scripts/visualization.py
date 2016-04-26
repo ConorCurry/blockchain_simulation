@@ -23,6 +23,10 @@ def test_erlang(data):
     print 'best k parameter: {}\nD value: {}'.format(best_k, best_D)
     dat = [x[0] for x in res]
     print dat
+    fig = plt.figure()
+    fig.suptitle('Erlang Shape Parameter Fit')
+    plt.xlabel('Shape Parameter - 1')
+    plt.ylabel('Kolmogorov-Smirnov Test Statistic')
     plt.plot([CRIT]*len(dat), 'r--', label='KS CRITICAL VALUE')
     plt.plot(dat, 'bH:', label='Erlang Shape Parameter D values')
     plt.show()
@@ -34,6 +38,10 @@ times = sorted([block['time'] for block in ds.interarrival])
 #trimmed_times = times[::len(times)//100]
 #test_erlang(trimmed_times)
 
+fig = plt.figure()
+fig.suptitle('Block Solution Time Histogram')
+plt.xlabel('Solution time (s)')
+plt.ylabel('Num blocks')
 plt.hist(times,100)
 plt.show()
 
@@ -49,5 +57,10 @@ rv = sp.erlang(3)
 x = np.linspace(0,1)
 #plt.plot(x, rv.pdf(x))
 #plt.show()
+
+fig = plt.figure()
+fig.suptitle('Transaction Arrival Rate Histogram')
+plt.xlabel('Avg Interarrival Time (s)')
+plt.ylabel('Num Blocks')
 plt.hist(tx_rate[:-len(tx_rate)//25], 100)
 plt.show()
