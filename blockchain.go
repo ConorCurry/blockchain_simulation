@@ -17,7 +17,7 @@ func main() {
 	blockchain2.TransactionMax = blockchain2.TransactionMax << 1
 
 	blockchain05 := NewBlockchain(t)
-	blockchain05.TransactionMax = blockchain2.TransactionMax >> 1
+	blockchain05.TransactionMax = blockchain05.TransactionMax >> 1
 
 	log.Println("Blockchains successfully created\nNow to run the simuations...")
 
