@@ -16,21 +16,16 @@ func main() {
 	blockchain2 := NewBlockchain(t)
 	blockchain2.TransactionMax = blockchain2.TransactionMax << 1
 
-	blockchain4 := NewBlockchain(t)
-	blockchain4.TransactionMax = blockchain4.TransactionMax << 2
+	blockchain05 := NewBlockchain(t)
+	blockchain05.TransactionMax = blockchain2.TransactionMax >> 1
 
-	blockchain8 := NewBlockchain(t)
-	blockchain8.TransactionMax = blockchain8.TransactionMax << 3
-
-	blockchain16 := NewBlockchain(t)
-	blockchain16.TransactionMax = blockchain16.TransactionMax << 4
+	log.Println("Blockchains successfully created\nNow to run the simuations...")
 
 	var wg sync.WaitGroup
-	wg.Add(5)
+	wg.Add(3)
 	go blockchain.Run(&wg, "data/output1.json")
 	go blockchain2.Run(&wg, "data/output2.json")
-	go blockchain4.Run(&wg, "data/output4.json")
-	go blockchain8.Run(&wg, "data/output8.json")
-	go blockchain16.Run(&wg, "data/output16.json")
+	go blockchain05.Run(&wg, "data/output05.json")
 	wg.Wait()
+	log.Println("Simulation complete.")
 }
